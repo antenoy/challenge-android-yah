@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation project(path: ':core')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Test
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation 'org.assertj:assertj-core:3.10.0'
+
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Jackson
+    api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+    api 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4.1'
+
+    implementation 'javax.inject:javax.inject:1'
+
+    api 'com.jakewharton.timber:timber:4.7.1'
+    api "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    api "com.squareup.retrofit2:converter-jackson:${retrofitVersion}"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp3Version"
+}
