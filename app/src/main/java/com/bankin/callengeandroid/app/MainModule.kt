@@ -9,7 +9,7 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
 import dagger.Module
 import dagger.Provides
 import timber.log.Timber
-import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import javax.inject.Named
 import javax.inject.Singleton
@@ -22,7 +22,7 @@ class MainModule(val context: Context) {
 
     @Singleton
     @Provides
-    fun provideBackgroundExecutor(): ExecutorService = Executors.newFixedThreadPool(1)
+    fun provideBackgroundExecutor(): Executor = Executors.newFixedThreadPool(1)
 
     @Singleton
     @Provides
