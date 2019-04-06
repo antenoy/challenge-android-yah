@@ -2,12 +2,16 @@ package com.bankin.callengeandroid.app
 
 import android.content.Context
 import android.content.res.Resources
+import com.challenge.mob.core.repository.MainCategoryRepository
+import com.challenge.mob.repository.ChallengeServices
+import com.challenge.mob.repository.maincategory.MainCategoryRepositoryImpl
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import dagger.Module
 import dagger.Provides
+import retrofit2.Retrofit
 import timber.log.Timber
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -40,10 +44,12 @@ class MainModule(val context: Context) {
 
     @Singleton
     @Provides
-    fun provideObjectMapper(): ObjectMapper {
-        return ObjectMapper()
-            .registerModule(KotlinModule())
-            .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-            .setSerializationInclusion(JsonInclude.Include.NON_NULL)
-    }
+    fun provideObjectMapper(): ObjectMapper = ObjectMapper()
+        .registerModule(KotlinModule())
+        .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+        .setSerializationInclusion(JsonInclude.Include.NON_NULL)
+
+    @Provides
+    fun provideMainCategoryRepositoryImpl(retrofit: Retrofit) : MainCategoryRepository =
+        MainCategoryRepositoryImpl(retrofit.create(ChallengeServices::class.java))
 }

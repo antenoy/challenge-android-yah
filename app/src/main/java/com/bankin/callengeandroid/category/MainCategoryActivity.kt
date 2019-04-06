@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.bankin.callengeandroid.R
 import com.bankin.callengeandroid.app.ChallengeApplication
+import com.challenge.mob.core.entity.MainCategory
 import com.nicolasmouchel.executordecorator.MutableDecorator
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainCategoryActivity : AppCompatActivity(), MainCategoryView {
@@ -31,5 +33,14 @@ class MainCategoryActivity : AppCompatActivity(), MainCategoryView {
     override fun onDestroy() {
         viewDecorator.mutate(null)
         super.onDestroy()
+    }
+
+    override fun displayCategory(categories: List<MainCategory>) {
+        Timber.d("CATEGORIES -----------------------> $categories")
+        //TODO Adapter Here
+    }
+
+    override fun displayError() {
+        //TODO AlertDialog Here
     }
 }
