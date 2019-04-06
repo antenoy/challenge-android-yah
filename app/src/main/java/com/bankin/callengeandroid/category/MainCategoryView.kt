@@ -1,8 +1,8 @@
 package com.bankin.callengeandroid.category
 
-import com.challenge.mob.core.entity.MainCategory
+import com.challenge.mob.core.model.CategoriesViewModel
 
 interface MainCategoryView {
-    fun displayCategory(categories: List<MainCategory>)
-    fun displayError()
+    fun displayCategory(categories: List<CategoriesViewModel>)
+    fun displayError(exception: Throwable)
 }

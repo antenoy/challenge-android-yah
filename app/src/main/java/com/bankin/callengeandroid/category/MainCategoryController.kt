@@ -7,7 +7,9 @@ interface MainCategoryController {
     fun loadCategory()
 }
 
-class MainCategoryControllerImpl @Inject constructor(val interactor: MainCategoryInteractor) : MainCategoryController {
+class MainCategoryControllerImpl @Inject constructor(
+    private val interactor: MainCategoryInteractor
+) : MainCategoryController {
     override fun loadCategory() {
         interactor.loadCategory()
     }
