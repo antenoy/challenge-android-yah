@@ -13,6 +13,8 @@ dependencies {
     testCompile("com.nhaarman:mockito-kotlin:1.1.0") {
         exclude module: "kotlin-reflect"
     }
+
+    implementation 'javax.inject:javax.inject:1'
 }
 
 sourceCompatibility = "7"

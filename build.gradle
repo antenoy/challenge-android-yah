@@ -5,6 +5,7 @@ ext {
     retrofitVersion = "2.3.0"
     okhttp3Version = "3.8.0"
     mockitoVersion = "2.8.47"
+    mockWebServerVersion = "3.8.0"
 }
 
 buildscript {

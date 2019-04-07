@@ -4,15 +4,15 @@ import android.app.Application
 import android.content.Context
 import timber.log.Timber
 
-class ChallengeApplication: Application() {
+class ChallengeApplication : Application() {
     private lateinit var component: MainComponent
 
     companion object {
-            fun getComponent(context: Context): MainComponent {
-                val application = context.applicationContext as ChallengeApplication
-                return application.component
-            }
+        fun getComponent(context: Context): MainComponent {
+            val application = context.applicationContext as ChallengeApplication
+            return application.component
         }
+    }
 
     override fun onCreate() {
         super.onCreate()
