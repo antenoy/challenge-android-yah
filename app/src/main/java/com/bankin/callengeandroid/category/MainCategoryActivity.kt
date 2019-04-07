@@ -6,7 +6,6 @@ import com.bankin.callengeandroid.R
 import com.bankin.callengeandroid.app.ChallengeApplication
 import com.challenge.mob.core.model.CategoriesViewModel
 import com.nicolasmouchel.executordecorator.MutableDecorator
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainCategoryActivity : AppCompatActivity(), MainCategoryView {
@@ -36,7 +35,6 @@ class MainCategoryActivity : AppCompatActivity(), MainCategoryView {
     }
 
     override fun displayCategory(categories: List<CategoriesViewModel>) {
-        Timber.d("CATEGORIES -----------------------> $categories")
         //TODO Adapter Here
     }
 
