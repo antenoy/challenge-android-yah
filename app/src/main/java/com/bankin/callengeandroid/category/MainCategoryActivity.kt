@@ -1,10 +1,12 @@
 package com.bankin.callengeandroid.category
 
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.bankin.callengeandroid.R
 import com.bankin.callengeandroid.app.ChallengeApplication
+import com.bankin.callengeandroid.subcategory.SubCategoryActivity
 import com.challenge.mob.core.model.CategoriesViewModel
 import com.nicolasmouchel.executordecorator.MutableDecorator
 import kotlinx.android.synthetic.main.activity_main_category.*
@@ -33,7 +35,6 @@ class MainCategoryActivity : AppCompatActivity(), MainCategoryView {
         viewDecorator.mutate(this)
 
         categoriesRecyclerView.layoutManager = LinearLayoutManager(this)
-
         controller.loadCategory()
     }
 
@@ -43,11 +44,20 @@ class MainCategoryActivity : AppCompatActivity(), MainCategoryView {
     }
 
     override fun displayCategory(categories: List<CategoriesViewModel>) {
-        categoriesRecyclerView.adapter = CategoriesAdapter(this, categories)
+        categoriesRecyclerView.adapter = CategoriesAdapter(this, categories, ::onCategoryClickListener)
         viewFlipper.displayedChild = CONTENT_CHILD
     }
 
     override fun displayError(exception: Throwable) {
-        //TODO AlertDialog Here
+        AlertDialog.Builder(this)
+            .setTitle(R.string.error_title)
+            .setMessage(R.string.an_error_happened)
+            .setPositiveButton(R.string.ok, null)
+            .create()
+            .show()
+    }
+
+    private fun onCategoryClickListener(categoryId: String, categoryName: String) {
+        startActivity(SubCategoryActivity.newIntent(this, categoryId, categoryName))
     }
 }
