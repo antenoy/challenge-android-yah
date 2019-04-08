@@ -28,6 +28,6 @@ class MainCategoryRepositoryImpl(
                     jsonMainCategory.id,
                     jsonMainCategory.name
                 )
-            }
+            }.sortedBy { mainCategory -> mainCategory.name }
 }
 

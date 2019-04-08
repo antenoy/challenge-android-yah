@@ -15,20 +15,20 @@
       "is_deleted": false
     },
     {
-      "id": 171,
-      "resource_uri": "/v2/categories/171",
+      "id": 163,
+      "resource_uri": "/v2/categories/163",
       "resource_type": "category",
-      "name": "Abonnements",
+      "name": "Santé",
       "parent": null,
       "custom": false,
       "other": false,
       "is_deleted": false
     },
     {
-      "id": 163,
-      "resource_uri": "/v2/categories/163",
+      "id": 171,
+      "resource_uri": "/v2/categories/171",
       "resource_type": "category",
-      "name": "Santé",
+      "name": "Abonnements",
       "parent": null,
       "custom": false,
       "other": false,
