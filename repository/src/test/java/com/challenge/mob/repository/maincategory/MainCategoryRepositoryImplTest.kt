@@ -42,7 +42,7 @@ class MainCategoryRepositoryImplTest {
             .build()
             .create(ChallengeServices::class.java)
 
-        repository = MainCategoryRepositoryImpl(service)
+        repository = MainCategoryRepositoryImpl(service, createCategoriesDataProvider())
     }
 
     @After

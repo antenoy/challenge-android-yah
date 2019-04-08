@@ -46,6 +46,8 @@ dependencies {
     api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
     api 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4.1'
 
+    api "com.orhanobut:hawk:2.0.1"
+
     implementation 'javax.inject:javax.inject:1'
 
     api 'com.jakewharton.timber:timber:4.7.1'

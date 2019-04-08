@@ -11,13 +11,13 @@ open class MainCategoryInteractor @Inject constructor(
     private val mainCategoryPresenter: MainCategoryPresenter
 ) {
     open fun loadCategory() {
-        val response = try {
+        val categoryResponse = try {
             val response = mainCategoryRepository.loadCategory()
             MainCategoryResponse.Success(response)
         } catch (e: RepositoryException) {
             MainCategoryResponse.Failure(e)
         }
-        mainCategoryPresenter.present(response)
+        mainCategoryPresenter.present(categoryResponse)
     }
 
     sealed class MainCategoryResponse {
