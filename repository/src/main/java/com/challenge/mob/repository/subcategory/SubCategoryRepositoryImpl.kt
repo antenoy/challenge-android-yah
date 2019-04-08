@@ -25,5 +25,5 @@ class SubCategoryRepositoryImpl @Inject constructor(
                 SubCategory(
                     it.name
                 )
-            }
+            }.sortedBy { it.name }
 }
