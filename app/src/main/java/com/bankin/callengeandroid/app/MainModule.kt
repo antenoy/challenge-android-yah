@@ -3,8 +3,11 @@ package com.bankin.callengeandroid.app
 import android.content.Context
 import android.content.res.Resources
 import com.challenge.mob.core.repository.MainCategoryRepository
+import com.challenge.mob.core.repository.SubCategoryRepository
 import com.challenge.mob.repository.ChallengeServices
+import com.challenge.mob.repository.local.createCategoriesDataProvider
 import com.challenge.mob.repository.maincategory.MainCategoryRepositoryImpl
+import com.challenge.mob.repository.subcategory.SubCategoryRepositoryImpl
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -50,6 +53,10 @@ class MainModule(val context: Context) {
         .setSerializationInclusion(JsonInclude.Include.NON_NULL)
 
     @Provides
-    fun provideMainCategoryRepositoryImpl(retrofit: Retrofit) : MainCategoryRepository =
-        MainCategoryRepositoryImpl(retrofit.create(ChallengeServices::class.java))
+    fun provideMainCategoryRepositoryImpl(retrofit: Retrofit): MainCategoryRepository =
+        MainCategoryRepositoryImpl(retrofit.create(ChallengeServices::class.java), createCategoriesDataProvider())
+
+    @Provides
+    fun provideSubCategoryRepositoryImpl(): SubCategoryRepository =
+        SubCategoryRepositoryImpl(createCategoriesDataProvider())
 }

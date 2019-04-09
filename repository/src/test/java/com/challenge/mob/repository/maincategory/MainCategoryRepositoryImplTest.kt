@@ -1,5 +1,6 @@
 package com.challenge.mob.repository.maincategory
 
+import com.challenge.mob.core.dataprovider.CategoriesDataProvider
 import com.challenge.mob.core.entity.MainCategory
 import com.challenge.mob.core.repository.CategoryException
 import com.challenge.mob.repository.ChallengeServices
@@ -15,6 +16,7 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -25,6 +27,9 @@ class MainCategoryRepositoryImplTest {
     private val server = MockWebServer()
     private lateinit var service: ChallengeServices
     private lateinit var repository: MainCategoryRepositoryImpl
+
+    @Mock
+    private lateinit var categoriesDataProvider: CategoriesDataProvider
 
     @Before
     fun setUp() {
@@ -42,7 +47,7 @@ class MainCategoryRepositoryImplTest {
             .build()
             .create(ChallengeServices::class.java)
 
-        repository = MainCategoryRepositoryImpl(service)
+        repository = MainCategoryRepositoryImpl(service, categoriesDataProvider)
     }
 
     @After
