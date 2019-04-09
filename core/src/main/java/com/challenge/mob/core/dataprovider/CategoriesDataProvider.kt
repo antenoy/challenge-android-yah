@@ -8,7 +8,9 @@ interface CategoriesDataProvider {
     fun getCategories(): List<AllCategoriesItems>
 }
 
-class CategoriesDataProviderImpl(private val categoriesLocalRepository: CategoriesLocalRepository): CategoriesDataProvider {
+class CategoriesDataProviderImpl(
+    private val categoriesLocalRepository: CategoriesLocalRepository
+) : CategoriesDataProvider {
     override fun setCategories(allCategoriesItems: List<AllCategoriesItems>) {
         categoriesLocalRepository.setCategories(allCategoriesItems)
     }
