@@ -4,6 +4,7 @@ import com.challenge.mob.core.dataprovider.CategoriesDataProvider
 import com.challenge.mob.core.entity.AllCategoriesItems
 import com.challenge.mob.core.entity.ParentCategory
 import com.challenge.mob.core.entity.SubCategory
+import com.challenge.mob.core.repository.SubCategoryException
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,7 +23,7 @@ class SubCategoryRepositoryImplTest {
     private lateinit var repository: SubCategoryRepositoryImpl
 
     @Test
-    fun loadSubCategory() {
+    fun `loadSubCategory should return all Sub Categories`() {
         // Given
         val mainCategoryId = "mainCategoryId"
         val allCategoriesItems = listOf(
@@ -59,5 +60,17 @@ class SubCategoryRepositoryImplTest {
 
         // Then
         Assert.assertEquals(subcategories, expectedSubCategories)
+    }
+
+    @Test(expected = SubCategoryException::class)
+    fun `loadSubCategory should throw exception if sub categories is empty`() {
+        // Given
+        val mainCategoryId = "mainCategoryId"
+        val allCategoriesItems = emptyList<AllCategoriesItems>()
+
+        given(categoriesDataProvider.getCategories()).willReturn(allCategoriesItems)
+
+        // When
+        repository.loadSubCategory(mainCategoryId)
     }
 }
