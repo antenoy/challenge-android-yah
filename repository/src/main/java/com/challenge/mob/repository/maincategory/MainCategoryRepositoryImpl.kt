@@ -1,9 +1,9 @@
 package com.challenge.mob.repository.maincategory
 
 import com.challenge.mob.core.dataprovider.CategoriesDataProvider
-import com.challenge.mob.core.entity.AllCategoriesItems
 import com.challenge.mob.core.entity.MainCategory
 import com.challenge.mob.core.entity.ParentCategory
+import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.repository.CategoryException
 import com.challenge.mob.core.repository.MainCategoryRepository
 import com.challenge.mob.repository.ChallengeServices
@@ -18,7 +18,7 @@ class MainCategoryRepositoryImpl(
         try {
             val response = challengeServices.getCategory().execute()
             val jsonResources = response.body() ?: throw CategoryException()
-            categoriesDataProvider.setCategories(jsonResources.toAllCategories())
+            categoriesDataProvider.setCategories(jsonResources.toSubCategoriesItems())
             return transformToEntity(jsonResources)
         } catch (e: IOException) {
             throw CategoryException()
@@ -35,17 +35,14 @@ class MainCategoryRepositoryImpl(
                 )
             }.sortedBy { mainCategory -> mainCategory.name }
 
-    private fun JsonRessources.toAllCategories(): List<AllCategoriesItems> {
-        return resources.filter { it.parent != null }
+    private fun JsonRessources.toSubCategoriesItems(): List<SubCategoriesItems> =
+        resources
+            .filter { it.parent != null }
             .map { jsonMainCategory ->
-                AllCategoriesItems(
+                SubCategoriesItems(
                     jsonMainCategory.id,
                     jsonMainCategory.name,
                     ParentCategory(jsonMainCategory.parent?.id)
                 )
             }
-    }
 }
-
-
-

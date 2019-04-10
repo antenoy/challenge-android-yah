@@ -1,20 +1,20 @@
 package com.challenge.mob.core.dataprovider
 
-import com.challenge.mob.core.entity.AllCategoriesItems
+import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.repository.local.CategoriesLocalRepository
 
 interface CategoriesDataProvider {
-    fun setCategories(allCategoriesItems: List<AllCategoriesItems>)
-    fun getCategories(): List<AllCategoriesItems>
+    fun setCategories(subCategoriesItems: List<SubCategoriesItems>)
+    fun getCategories(): List<SubCategoriesItems>
 }
 
 class CategoriesDataProviderImpl(
     private val categoriesLocalRepository: CategoriesLocalRepository
 ) : CategoriesDataProvider {
-    override fun setCategories(allCategoriesItems: List<AllCategoriesItems>) {
-        categoriesLocalRepository.setCategories(allCategoriesItems)
+    override fun setCategories(subCategoriesItems: List<SubCategoriesItems>) {
+        categoriesLocalRepository.setCategories(subCategoriesItems)
     }
 
-    override fun getCategories(): List<AllCategoriesItems> = categoriesLocalRepository.getCategories()
+    override fun getCategories(): List<SubCategoriesItems> = categoriesLocalRepository.getCategories()
 
 }

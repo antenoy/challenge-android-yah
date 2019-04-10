@@ -11,7 +11,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -33,25 +32,27 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Test
-    testImplementation 'junit:junit:4.12'
+    testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
-    testImplementation 'org.assertj:assertj-core:3.10.0'
+    testImplementation "org.assertj:assertj-core:$assertjVersion"
     testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion"
 
-    compileOnly 'javax.annotation:jsr250-api:1.0'
+    compileOnly "javax.annotation:jsr250-api:$javaxAnnotationVersion"
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
     // Jackson
-    api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
-    api 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4.1'
+    api "com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion"
+    api "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonModuleKotlinVersion"
 
-    api "com.orhanobut:hawk:2.0.1"
+    api "com.orhanobut:hawk:$hawkVersion"
 
-    implementation 'javax.inject:javax.inject:1'
+    implementation "javax.inject:javax.inject:$javaxInjectVersion"
 
-    api 'com.jakewharton.timber:timber:4.7.1'
+    api "com.jakewharton.timber:timber:$timberVersion"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp3Version"
+
+    //Retrofit
     api "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     api "com.squareup.retrofit2:converter-jackson:${retrofitVersion}"
-    api "com.squareup.okhttp3:logging-interceptor:$okhttp3Version"
 }

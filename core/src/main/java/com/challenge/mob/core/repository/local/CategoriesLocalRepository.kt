@@ -1,8 +1,8 @@
 package com.challenge.mob.core.repository.local
 
-import com.challenge.mob.core.entity.AllCategoriesItems
+import com.challenge.mob.core.entity.SubCategoriesItems
 
 interface CategoriesLocalRepository {
-    fun setCategories(allCategoriesItems: List<AllCategoriesItems>)
-    fun getCategories(): List<AllCategoriesItems>
+    fun setCategories(subCategoriesItems: List<SubCategoriesItems>)
+    fun getCategories(): List<SubCategoriesItems>
 }

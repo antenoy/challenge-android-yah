@@ -17,11 +17,8 @@ class ChallengeApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         Timber.plant(Timber.DebugTree())
-
         Hawk.init(this).build()
-
         component = DaggerMainComponent.builder().mainModule(MainModule(this)).build()
     }
 }

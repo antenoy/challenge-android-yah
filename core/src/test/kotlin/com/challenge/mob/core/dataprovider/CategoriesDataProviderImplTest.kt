@@ -1,9 +1,8 @@
 package com.challenge.mob.core.dataprovider
 
-import com.challenge.mob.core.entity.AllCategoriesItems
 import com.challenge.mob.core.entity.ParentCategory
+import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.repository.local.CategoriesLocalRepository
-
 import org.junit.Before
 import org.junit.Test
 import org.mockito.BDDMockito.then
@@ -25,12 +24,12 @@ class CategoriesDataProviderImplTest {
     fun `setCategories should set AllCategoriesItems`() {
         // Given
         val allCategoriesItems = listOf(
-            AllCategoriesItems(
+            SubCategoriesItems(
                 id = "id1",
                 name = "name1",
                 parent = ParentCategory("idParent1")
             ),
-            AllCategoriesItems(
+            SubCategoriesItems(
                 id = "id2",
                 name = "name2",
                 parent = ParentCategory("idParent2")

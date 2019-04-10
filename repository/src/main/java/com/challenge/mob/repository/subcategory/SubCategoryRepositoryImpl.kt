@@ -1,7 +1,7 @@
 package com.challenge.mob.repository.subcategory
 
 import com.challenge.mob.core.dataprovider.CategoriesDataProvider
-import com.challenge.mob.core.entity.AllCategoriesItems
+import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.entity.SubCategory
 import com.challenge.mob.core.repository.SubCategoryException
 import com.challenge.mob.core.repository.SubCategoryRepository
@@ -21,7 +21,7 @@ class SubCategoryRepositoryImpl @Inject constructor(
     }
 
     private fun transformToEntity(
-        categories: List<AllCategoriesItems>,
+        categories: List<SubCategoriesItems>,
         mainCategoryId: String
     ): List<SubCategory> =
         categories

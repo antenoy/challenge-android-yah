@@ -1,8 +1,8 @@
 package com.challenge.mob.repository.subcategory
 
 import com.challenge.mob.core.dataprovider.CategoriesDataProvider
-import com.challenge.mob.core.entity.AllCategoriesItems
 import com.challenge.mob.core.entity.ParentCategory
+import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.entity.SubCategory
 import com.challenge.mob.core.repository.SubCategoryException
 import org.junit.Assert
@@ -27,17 +27,17 @@ class SubCategoryRepositoryImplTest {
         // Given
         val mainCategoryId = "mainCategoryId"
         val allCategoriesItems = listOf(
-            AllCategoriesItems(
+            SubCategoriesItems(
                 "id2",
                 "name2",
                 ParentCategory("mainCategoryId")
             ),
-            AllCategoriesItems(
+            SubCategoriesItems(
                 "id1",
                 "name1",
                 ParentCategory("mainCategoryId")
             ),
-            AllCategoriesItems(
+            SubCategoriesItems(
                 "id3",
                 "name3",
                 ParentCategory("parentId")
@@ -66,7 +66,7 @@ class SubCategoryRepositoryImplTest {
     fun `loadSubCategory should throw exception if sub categories is empty`() {
         // Given
         val mainCategoryId = "mainCategoryId"
-        val allCategoriesItems = emptyList<AllCategoriesItems>()
+        val allCategoriesItems = emptyList<SubCategoriesItems>()
 
         given(categoriesDataProvider.getCategories()).willReturn(allCategoriesItems)
 

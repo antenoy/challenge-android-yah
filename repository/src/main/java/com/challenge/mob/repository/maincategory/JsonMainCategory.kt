@@ -19,7 +19,6 @@ data class JsonMainCategory(
 
     @JsonProperty("parent")
     val parent: JsonParent?
-
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
