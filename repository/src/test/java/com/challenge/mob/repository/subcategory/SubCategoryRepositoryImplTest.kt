@@ -1,8 +1,8 @@
 package com.challenge.mob.repository.subcategory
 
 import com.challenge.mob.core.dataprovider.CategoriesDataProvider
-import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.entity.ParentCategory
+import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.entity.SubCategory
 import com.challenge.mob.core.repository.SubCategoryException
 import org.junit.Assert

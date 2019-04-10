@@ -1,9 +1,8 @@
 package com.challenge.mob.core.dataprovider
 
-import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.entity.ParentCategory
+import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.repository.local.CategoriesLocalRepository
-
 import org.junit.Before
 import org.junit.Test
 import org.mockito.BDDMockito.then
