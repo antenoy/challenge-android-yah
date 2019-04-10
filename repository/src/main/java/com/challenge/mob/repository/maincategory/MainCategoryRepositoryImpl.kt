@@ -18,7 +18,7 @@ class MainCategoryRepositoryImpl(
         try {
             val response = challengeServices.getCategory().execute()
             val jsonResources = response.body() ?: throw CategoryException()
-            categoriesDataProvider.setCategories(jsonResources.toAllCategories())
+            categoriesDataProvider.setCategories(jsonResources.toSubCategoriesItems())
             return transformToEntity(jsonResources)
         } catch (e: IOException) {
             throw CategoryException()
@@ -35,8 +35,9 @@ class MainCategoryRepositoryImpl(
                 )
             }.sortedBy { mainCategory -> mainCategory.name }
 
-    private fun JsonRessources.toAllCategories(): List<SubCategoriesItems> =
-        resources.filter { it.parent != null }
+    private fun JsonRessources.toSubCategoriesItems(): List<SubCategoriesItems> =
+        resources
+            .filter { it.parent != null }
             .map { jsonMainCategory ->
                 SubCategoriesItems(
                     jsonMainCategory.id,
