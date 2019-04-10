@@ -3,6 +3,7 @@ package com.challenge.mob.repository.subcategory
 import com.challenge.mob.core.dataprovider.CategoriesDataProvider
 import com.challenge.mob.core.entity.AllCategoriesItems
 import com.challenge.mob.core.entity.SubCategory
+import com.challenge.mob.core.repository.SubCategoryException
 import com.challenge.mob.core.repository.SubCategoryRepository
 import javax.inject.Inject
 
@@ -12,7 +13,11 @@ class SubCategoryRepositoryImpl @Inject constructor(
 
     override fun loadSubCategory(mainCategoryId: String): List<SubCategory> {
         val categories = categoriesDataProvider.getCategories()
-        return transformToEntity(categories, mainCategoryId)
+        if (categories.isNotEmpty()) {
+            return transformToEntity(categories, mainCategoryId)
+        } else {
+            throw SubCategoryException()
+        }
     }
 
     private fun transformToEntity(

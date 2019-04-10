@@ -44,8 +44,8 @@ class MainCategoryActivity : AppCompatActivity(), MainCategoryView {
     }
 
     override fun displayCategory(categories: List<CategoriesViewModel>) {
-        categoriesRecyclerView.adapter = CategoriesAdapter(this, categories, ::onCategoryClickListener)
-        viewFlipper.displayedChild = CONTENT_CHILD
+        categoriesRecyclerView.adapter = MainCategoryAdapter(this, categories, ::onCategoryClickListener)
+        categoriesViewFlipper.displayedChild = CONTENT_CHILD
     }
 
     override fun displayError(exception: Throwable) {

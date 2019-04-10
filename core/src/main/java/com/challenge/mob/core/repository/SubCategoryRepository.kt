@@ -6,3 +6,5 @@ interface SubCategoryRepository {
     @Throws(RepositoryException::class)
     fun loadSubCategory(mainCategoryId: String): List<SubCategory>
 }
+
+class SubCategoryException : RepositoryException()
