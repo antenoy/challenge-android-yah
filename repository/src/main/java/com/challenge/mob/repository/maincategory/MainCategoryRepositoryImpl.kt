@@ -1,9 +1,9 @@
 package com.challenge.mob.repository.maincategory
 
 import com.challenge.mob.core.dataprovider.CategoriesDataProvider
-import com.challenge.mob.core.entity.AllCategoriesItems
 import com.challenge.mob.core.entity.MainCategory
 import com.challenge.mob.core.entity.ParentCategory
+import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.repository.CategoryException
 import com.challenge.mob.core.repository.MainCategoryRepository
 import com.challenge.mob.repository.ChallengeServices
@@ -35,16 +35,15 @@ class MainCategoryRepositoryImpl(
                 )
             }.sortedBy { mainCategory -> mainCategory.name }
 
-    private fun JsonRessources.toAllCategories(): List<AllCategoriesItems> {
-        return resources.filter { it.parent != null }
+    private fun JsonRessources.toAllCategories(): List<SubCategoriesItems> =
+        resources.filter { it.parent != null }
             .map { jsonMainCategory ->
-                AllCategoriesItems(
+                SubCategoriesItems(
                     jsonMainCategory.id,
                     jsonMainCategory.name,
                     ParentCategory(jsonMainCategory.parent?.id)
                 )
             }
-    }
 }
 
 

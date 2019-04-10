@@ -4,14 +4,14 @@ import com.challenge.mob.core.entity.SubCategory
 import com.challenge.mob.core.presenter.SubCategoryPresenter
 import com.challenge.mob.core.repository.RepositoryException
 import com.challenge.mob.core.repository.SubCategoryRepository
-import com.nhaarman.mockito_kotlin.given
-import com.nhaarman.mockito_kotlin.only
-import com.nhaarman.mockito_kotlin.then
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.BDDMockito.given
+import org.mockito.BDDMockito.then
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.mock
+import org.mockito.Mockito.only
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)

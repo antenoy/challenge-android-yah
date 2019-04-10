@@ -2,7 +2,7 @@ package com.challenge.mob.repository.local
 
 import com.challenge.mob.core.dataprovider.CategoriesDataProvider
 import com.challenge.mob.core.dataprovider.CategoriesDataProviderImpl
-import com.challenge.mob.core.entity.AllCategoriesItems
+import com.challenge.mob.core.entity.SubCategoriesItems
 import com.challenge.mob.core.repository.local.CategoriesLocalRepository
 import com.orhanobut.hawk.Hawk
 
@@ -14,9 +14,9 @@ internal class CategoriesLocalRepositoryImpl : CategoriesLocalRepository {
         private const val CATEGORIES = "CATEGORIES"
     }
 
-    override fun setCategories(allCategoriesItems: List<AllCategoriesItems>) {
-        Hawk.put(CATEGORIES, allCategoriesItems)
+    override fun setCategories(subCategoriesItems: List<SubCategoriesItems>) {
+        Hawk.put(CATEGORIES, subCategoriesItems)
     }
 
-    override fun getCategories(): List<AllCategoriesItems> = Hawk.get(CATEGORIES)
+    override fun getCategories(): List<SubCategoriesItems> = Hawk.get(CATEGORIES)
 }

@@ -29,10 +29,11 @@ class MainCategoryModule {
     fun provideMainCategoryController(
         executor: Executor,
         mainCategoryControllerImpl: MainCategoryControllerImpl
-    ): MainCategoryController = MainCategoryControllerDecorator(
-        executor,
-        mainCategoryControllerImpl
-    )
+    ): MainCategoryController =
+        MainCategoryControllerDecorator(
+            executor,
+            mainCategoryControllerImpl
+        )
 }
 
 @Module
