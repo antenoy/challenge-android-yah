@@ -12,14 +12,14 @@ import com.bankin.callengeandroid.R
 import com.challenge.mob.core.model.CategoriesViewModel
 import kotlinx.android.synthetic.main.cell_main_category.view.*
 
-class CategoriesAdapter(
+class MainCategoryAdapter(
     val context: Context,
-    private val categories: List<CategoriesViewModel>,
+    private val categoriesViewModel: List<CategoriesViewModel>,
     private val onCategoryClickListener: (String, String) -> Unit
-) : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
+) : RecyclerView.Adapter<MainCategoryAdapter.CategoriesViewHolder>() {
 
     class CategoriesViewHolder(view: View) : ViewHolder(view) {
-        val categoryTitle: TextView = view.categoryTitle
+        val categoryTitleTextView: TextView = view.categoryTitleTextView
         val categoryCardView: CardView = view.categoryCardView
     }
 
@@ -32,14 +32,12 @@ class CategoriesAdapter(
         return CategoriesViewHolder(view)
     }
 
-
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
-        holder.categoryTitle.text = categories[position].name
+        holder.categoryTitleTextView.text = categoriesViewModel[position].name
         holder.categoryCardView.setOnClickListener {
-            onCategoryClickListener(categories[position].id, categories[position].name)
+            onCategoryClickListener(categoriesViewModel[position].id, categoriesViewModel[position].name)
         }
     }
 
-    override fun getItemCount(): Int = categories.size
-
+    override fun getItemCount(): Int = categoriesViewModel.size
 }
